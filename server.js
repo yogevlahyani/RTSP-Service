@@ -15,15 +15,12 @@ require('dotenv').config();
 
 const fs = require('fs');
 const join = require('path').join;
-const express = require('express');
+const app = require('./app/app');
 const mongoose = require('mongoose');
 const passport = require('passport');
 const config = require('./app/config');
 
 const models = join(__dirname, 'app/models');
-const port = process.env.PORT || 3000;
-
-const app = express();
 
 // Bootstrap models
 fs.readdirSync(models)
@@ -35,21 +32,28 @@ fs.readdirSync(models)
 // require('./app/config/express')(app, passport);
 // require('./app/config/routes')(app, passport);
 
-function listen() {
-    app.listen(port);
-    console.log(`Express app started on port ${port}`);
-}
+// function listen() {
+//     app.listen(port);
+//     console.log(`Express app started on port ${port}`);
+// }
+//
+// function connect() {
+//     const options = { keepAlive: 1, useNewUrlParser: true };
+//     mongoose.connect(config.dbUrl, options);
+//
+//     return mongoose.connection;
+// }
+//
+// const connection = connect();
+//
+// connection
+//     .on('error', console.log)
+//     .on('disconnected', connect)
+//     .once('open', listen);
 
-function connect() {
-    const options = { keepAlive: 1, useNewUrlParser: true };
-    mongoose.connect(config.dbUrl, options);
+app.set('port', config.port);
 
-    return mongoose.connection;
-}
-
-const connection = connect();
-
-connection
-    .on('error', console.log)
-    .on('disconnected', connect)
-    .once('open', listen);
+app.listen(app.get('port'), () => {
+    console.log('Starting at ' + (new Date()).toString());
+    console.log(`Server listening on port ${app.get('port')}`);
+});

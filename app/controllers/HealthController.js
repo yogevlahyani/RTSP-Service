@@ -1,11 +1,13 @@
+const HttpStatus = require('http-status-codes');
+
 /**
  * Health controller
  */
 class HealthController {
-    static healthCheck() {
-        return {
+    static healthCheck(req, res) {
+        return res.status(HttpStatus.OK).json({
             db: 'ok',
-        };
+        });
     }
 }
 
