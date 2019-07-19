@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/src
+      - /src/node_modules
+    environment:
+      DOCKER_COMMAND: 'npm run start:debug'
+      DB_HOST: mongo
+      DB_PORT: 27017
+    env_file:
+      - .env
+    ports:
+      - 3000:3000
+      - 56745:56745
+    links:
+      - mongo
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017

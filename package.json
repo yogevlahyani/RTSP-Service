@@ -1,0 +1,39 @@
+{
+  "name": "anyvision-home-task-backend",
+  "description": "Anyvision home task backend",
+  "version": "0.0.1",
+  "author": {
+    "name": "Yogev Lahyani",
+    "email": "yogevlahyani@gmail.com"
+  },
+  "engines": {
+    "node": ">=10.x"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "start:debug": "nodemon --inspect=0.0.0.0:56745 server.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.19.0",
+    "cookie-parser": "~1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "~8.0.0",
+    "express": "~4.17.0",
+    "express-session": "~1.16.1",
+    "helmet": "~3.18.0",
+    "http-status-codes": "^1.3.2",
+    "mongoose": "^5.6.5",
+    "morgan": "~1.9.1",
+    "passport": "~0.4.0",
+    "passport-local": "~1.0.0",
+    "winston": "~3.2.1"
+  },
+  "devDependencies": {
+    "eslint": "~5.16.0",
+    "nodemon": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yogevlahyani/anyvision-home-task"
+  }
+}

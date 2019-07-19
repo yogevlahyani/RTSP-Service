@@ -1,0 +1,14 @@
+{
+  "globals": {
+    "rootRequire": false
+  },
+  "rules":{
+    "no-console": 2,
+    "indent": [2, 4],
+    "comma-dangle": [2, "always-multiline"]
+  },
+  "extends": ["eslint:recommended"],
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}
