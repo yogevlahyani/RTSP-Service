@@ -1,7 +1,17 @@
 const express = require('express');
 const appRouter = express.Router();
-const healthController = require('./controllers/HealthController');
+const asyncHandler = require('./helpers/asyncHandler');
+const userController = require('./controllers/UserController');
 
-appRouter.get('/health', healthController.healthCheck);
+appRouter.post('/user', asyncHandler(userController.register));
+
+// appRouter.post('/login',
+// 	passport.authenticate('local', { failureRedirect: '/login' }),
+// 	(req, res) => {
+// 		res.redirect('/');
+// 	}
+// );
+
+
 
 module.exports = appRouter;
