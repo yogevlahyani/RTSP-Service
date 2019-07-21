@@ -15,7 +15,7 @@ COPY package-lock.json ./
 
 RUN npm ci
 
-COPY . /src
+COPY . .
 
 EXPOSE 3000
 

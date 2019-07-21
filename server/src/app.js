@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('./routes');
-const { healthCheck } = require('./controllers/healthController');
+const { healthCheck } = require('./controllers/HealthController');
 const config = require('./config');
 
 const app = express();
