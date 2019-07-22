@@ -10,6 +10,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+require('./passport/passport');
+
 // controllers
 app.get('/', healthCheck);
 app.use(config.basePath, routes);
