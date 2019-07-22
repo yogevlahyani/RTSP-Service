@@ -1,6 +1,6 @@
 {
-  "name": "anyvision-home-task-backend",
-  "description": "Anyvision home task backend",
+  "name": "rtsp-service",
+  "description": "RTSP Service",
   "version": "0.0.1",
   "author": {
     "name": "Yogev Lahyani",

@@ -18,6 +18,6 @@ RUN npm ci
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 3001
 
 CMD ["sh", "./docker/entrypoint.sh"]
