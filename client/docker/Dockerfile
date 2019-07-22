@@ -4,12 +4,15 @@ FROM node:8.11.1-alpine
 RUN mkdir /app
 WORKDIR /app
 
+# add `/app/node_modules/.bin` to $PATH
+ENV PATH /app/node_modules/.bin:$PATH
+
 # install and cache app dependencies
 COPY package.json .
 COPY package-lock.json .
 
 RUN npm install
 
-COPY . .
+RUN npm install react-scripts@3.0.1 -g --silent
 
-CMD npm run start
+COPY . .
