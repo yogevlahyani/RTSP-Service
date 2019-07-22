@@ -1,5 +1,5 @@
 const HttpStatus = require('http-status-codes');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const User = require('../models/user');
 const userSchema = require('../validations/userSchema');
 const { validate } = require('../helpers/validator');
@@ -28,7 +28,11 @@ class UserController {
 		});
 		await newUser.save();
 
-		return res.status(HttpStatus.OK).json(newUser);
+		return res.status(HttpStatus.OK).json({
+			id: newUser._id,
+			email: newUser.email,
+			name: newUser.name,
+		});
 	}
 }
 

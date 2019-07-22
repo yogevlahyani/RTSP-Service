@@ -1,9 +1,9 @@
 const express = require('express');
 const appRouter = express.Router();
-const asyncHandler = require('./helpers/asyncHandler');
 const userController = require('./controllers/UserController');
 
-appRouter.post('/user', asyncHandler(userController.register));
+// Users CRUD
+appRouter.post('/users', userController.register);
 
 // appRouter.post('/login',
 // 	passport.authenticate('local', { failureRedirect: '/login' }),
