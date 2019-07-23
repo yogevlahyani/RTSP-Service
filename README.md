@@ -1,6 +1,6 @@
-### RTSP Service
+## RTSP Service
 
-## Running the app
+### Running the app
 Make sure there are no processes running on ports 3000 && 3001
 Can be replaced anyway inside docker-compose.yml
 
@@ -17,3 +17,10 @@ make start
 Then you can go straight to [localhost:3000](http://localhost:3000)
 
 Enjoy!
+
+#### TODO:
+- More generic notification system on frontend with redux and global snackbar
+- Improve resiliency
+- Improve error handling
+- Improve logs on BE
+- Do some cleanups
