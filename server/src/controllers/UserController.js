@@ -27,7 +27,6 @@ class UserController {
 		const password = await bcrypt.hash(req.body.password, salt);
 		const newUser = new User({
 			...req.body,
-			userId: req.user._doc._id,
 			password,
 		});
 		await newUser.save();

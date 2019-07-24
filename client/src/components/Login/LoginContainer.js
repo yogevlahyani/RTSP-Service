@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login } from '../../thunks/user.thunk';
+import { login } from '../../redux/thunks/user.thunk';
 import LoginComponent from './LoginComponent';
 
 const mapStateToProps = state => ({

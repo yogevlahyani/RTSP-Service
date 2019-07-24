@@ -20,7 +20,6 @@ Enjoy!
 
 #### TODO:
 - More generic notification system on frontend with redux and global snackbar
-- Improve resiliency
 - Improve error handling
 - Improve logs on BE
 - Do some cleanups

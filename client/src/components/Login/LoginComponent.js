@@ -13,9 +13,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-// Temporary
+import Dialog from '@material-ui/core/Dialog';
 import Snackbar from '@material-ui/core/Snackbar';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import RegistrationContainer from '../Registration/RegistrationContainer';
 
 const useStyles = makeStyles(theme => ({
 	'@global': {
@@ -47,6 +48,7 @@ const LoginComponent = ({ authenticate, token, error }) => {
 	const [snackbarOpen, setSnackbarVisibility] = useState(false);
 	const [email, setEmail] = useState('example');
 	const [password, setPassword] = useState('password');
+	const [registrationModalOpen, setRegistrationModalOpen] = React.useState(false);
 	const classes = useStyles();
 
 	useEffect(() => {
@@ -56,7 +58,6 @@ const LoginComponent = ({ authenticate, token, error }) => {
 	}, [token]);
 
 	useEffect(() => {
-		console.log(error);
 		if (error) {
 			setSnackbarVisibility(true);
 		}
@@ -66,6 +67,14 @@ const LoginComponent = ({ authenticate, token, error }) => {
 		return <Redirect to={{ pathname: '/' }} />;
 	}
 
+	const handleRegistrationModalOpen = () => {
+		setRegistrationModalOpen(true);
+	};
+
+	const handleRegistrationModalClose = () => {
+		setRegistrationModalOpen(false);
+	};
+
 	return (
 		<Container component="main" maxWidth="xs">
 			<CssBaseline />
@@ -74,7 +83,7 @@ const LoginComponent = ({ authenticate, token, error }) => {
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
-		Sign in
+					Sign in
 				</Typography>
 				<form className={classes.form} noValidate>
 					<TextField
@@ -117,7 +126,7 @@ const LoginComponent = ({ authenticate, token, error }) => {
 					</Button>
 					<Grid container>
 						<Grid item>
-							<Link href="#" variant="body2">
+							<Link onClick={handleRegistrationModalOpen} variant="body2">
 								{"Don't have an account? Sign Up"}
 							</Link>
 						</Grid>
@@ -136,6 +145,16 @@ const LoginComponent = ({ authenticate, token, error }) => {
 				}}
 				message={<span id="message-id">{error}</span>}
 			/>
+
+			<Dialog
+				aria-labelledby="simple-modal-title"
+				aria-describedby="simple-modal-description"
+				open={registrationModalOpen}
+				onClose={handleRegistrationModalClose}
+			>
+				<DialogTitle id="simple-dialog-title">Registration</DialogTitle>
+				<RegistrationContainer handleRegistrationModalClose={handleRegistrationModalClose} />
+			</Dialog>
 		</Container>
 	);
 };

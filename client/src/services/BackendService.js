@@ -22,6 +22,10 @@ class BackendService {
 
 		return data.access_token;
 	}
+
+	register(email, name, password) {
+		return axios.post(`${config.service.baseUrl}/users`, { email, name, password });
+	}
 }
 
 const getBackendService = () => {
