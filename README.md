@@ -26,6 +26,12 @@ Enjoy!
 
 Live example can be seen [Here](https://cocky-albattani-fc6587.netlify.com/)
 
+Demo user:
+
+User: `user@example.com`
+
+Password: `123123`
+
 #### TODO:
 - Add Logout button
 - Add back button
