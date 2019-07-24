@@ -6,8 +6,8 @@ Can be replaced anyway inside docker-compose.yml
 
 First, run:
 ```text
-cp server/.env.example /server/.env
-cp client/.env.example /client/.env
+cp server/.env.example server/.env
+cp client/.env.example client/.env
 ```
 
 Then:
