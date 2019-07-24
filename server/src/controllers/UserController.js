@@ -27,6 +27,7 @@ class UserController {
 		const password = await bcrypt.hash(req.body.password, salt);
 		const newUser = new User({
 			...req.body,
+			userId: req.user._doc._id,
 			password,
 		});
 		await newUser.save();
@@ -40,9 +41,13 @@ class UserController {
 
 	static authenticate(req, res) {
 		passport.authenticate('local', { session: false }, (err, user, info) => {
-			if (err || !user) {
+			if (err) {
+			  res.status(HttpStatus.INTERNAL_SERVER_ERROR).send(err);
+			}
+
+			if (!user) {
 				return res.status(HttpStatus.BAD_REQUEST).json({
-					message: 'Something is not right',
+					message: 'Wrong Credentials',
 					user,
 				});
 			}

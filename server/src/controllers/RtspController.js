@@ -17,13 +17,16 @@ class RtspController {
 			return res.status(HttpStatus.BAD_REQUEST).send(data);
 		}
 
-		const rtsp = await RTSP.findOne({ url: req.body.url }).exec();
+		const rtsp = await RTSP.findOne({ url: req.body.url, userId: req.user._id }).exec();
 
 		if (rtsp) {
 			return res.status(HttpStatus.CONFLICT).send('URL Already exists');
 		}
 
-		const newRtsp = new RTSP(req.body);
+		const newRtsp = new RTSP({
+			...req.body,
+			userId: req.user._id
+		});
 		await newRtsp.save();
 
 		return res.status(HttpStatus.CREATED).json({
@@ -34,7 +37,7 @@ class RtspController {
 	}
 
 	static async getAll(req, res) {
-		let rtspList = await RTSP.find().exec();
+		let rtspList = await RTSP.find({ userId: req.user._id }).exec();
 		rtspList = rtspList.map(rtsp => ({
 			id: rtsp._id,
 			url: rtsp.url,
@@ -45,7 +48,7 @@ class RtspController {
 	}
 
 	static async getOne(req, res) {
-		const rtsp = await RTSP.findOne({ _id: req.params.id }).exec();
+		const rtsp = await RTSP.findOne({ _id: req.params.id, userId: req.user._id }).exec();
 
 		return res.status(HttpStatus.OK).json({
 			id: rtsp._id,

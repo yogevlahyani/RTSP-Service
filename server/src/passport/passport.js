@@ -10,7 +10,7 @@ const config = require('../config');
 passport.use(
 	new LocalStrategy({
 		usernameField: 'email',
-		passwordField: 'password'
+		passwordField: 'password',
 	},
 	async (email, password, cb) => {
 		try {
