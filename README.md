@@ -19,6 +19,8 @@ Then you can go straight to [localhost:3000](http://localhost:3000)
 Enjoy!
 
 #### TODO:
+- Add Logout button
+- Add back button
 - More generic notification system on frontend with redux and global snackbar
 - Improve error handling
 - Improve logs on BE

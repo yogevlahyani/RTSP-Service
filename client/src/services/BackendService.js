@@ -5,7 +5,7 @@ let backendService = null;
 
 class BackendService {
 	constructor() {
-		this.token = null;
+		this.token = localStorage.getItem('token') || null;
 	}
 
 	setToken(token) {
@@ -25,6 +25,24 @@ class BackendService {
 
 	register(email, name, password) {
 		return axios.post(`${config.service.baseUrl}/users`, { email, name, password });
+	}
+
+	getAllRtsps() {
+		const headers = { Authorization: `Bearer ${this.token}` };
+
+		return axios.get(`${config.service.baseUrl}/rtsps`, { headers });
+	}
+
+	getOneRtsp(id) {
+		const headers = { Authorization: `Bearer ${this.token}` };
+
+		return axios.get(`${config.service.baseUrl}/rtsps/${id}`, { headers });
+	}
+
+	createRtsp(name, url) {
+		const headers = { Authorization: `Bearer ${this.token}` };
+
+		return axios.post(`${config.service.baseUrl}/rtsps`, { name, url }, { headers });
 	}
 }
 

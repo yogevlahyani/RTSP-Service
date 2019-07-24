@@ -8,9 +8,10 @@ import {
 } from 'react-router-dom';
 import configureStore from './redux/store';
 import './index.css';
-import App from './App';
 import Header from './components/Header';
+import HomeContainer from './components/Home/HomeContainer';
 import LoginContainer from './components/Login/LoginContainer';
+import RtspContainer from './components/Rtsp/RtspContainer';
 
 const store = configureStore();
 
@@ -20,8 +21,9 @@ ReactDOM.render(
 			<div className="main">
 				<Header />
 				<Switch>
-					<Route exact path="/" component={App} />
+					<Route exact path="/" component={HomeContainer} />
 					<Route exact path="/login" component={LoginContainer} />
+					<Route exact path="/rtsp/:id" component={RtspContainer} />
 				</Switch>
 			</div>
 		</Router>
