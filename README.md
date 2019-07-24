@@ -6,10 +6,16 @@ Can be replaced anyway inside docker-compose.yml
 
 First, run:
 ```text
+cp server/.env.example /server/.env
+cp client/.env.example /client/.env
+```
+
+Then:
+```text
 make build
 ```
 
-Then, run:
+Finally, run:
 ```text
 make start
 ```
@@ -17,6 +23,8 @@ make start
 Then you can go straight to [localhost:3000](http://localhost:3000)
 
 Enjoy!
+
+Live example can be seen [Here](https://cocky-albattani-fc6587.netlify.com/)
 
 #### TODO:
 - Add Logout button
