@@ -33,9 +33,15 @@ User: `user@example.com`
 Password: `123123`
 
 #### TODO:
+##### Client
 - Add Logout button
 - Add back button
 - More generic notification system on frontend with redux and global snackbar
 - Improve error handling
+- Do some cleanups
+
+##### Server
+- Add swagger
 - Improve logs on BE
+- Improve error handling
 - Do some cleanups
